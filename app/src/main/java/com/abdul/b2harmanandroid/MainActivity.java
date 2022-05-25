@@ -6,21 +6,58 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.AlarmClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     EditText nameEditText; //declaration
+    public static  String TAG = MainActivity.class.getSimpleName(); //"MainActivity"
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //getting created -- memory is allocated - coming out of sdcard/storage and getting into ram
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //inflating xml
+        Log.i(TAG,"oncreate");
         nameEditText = findViewById(R.id.etName); //initialization -- getting hold of the edittext/ taking handle
         Employee ansari = new Employee("abdul", 123, true);
         ansari.seteName("abdul");
         Student abdul = new Student("ansari", 123, true);
+    }
+
+    @Override
+    protected void onStart() { //activity is created and visible to the user
+        super.onStart();
+        Log.e(TAG,"onstart");
+    }
+
+    @Override //activity is going into the background -- sleep
+    protected void onPause() {
+        super.onPause();
+        Log.v(TAG,"onpause");
+    }
+
+    @Override //waking up -- ready to interact-- handle button clicks
+    protected void onResume() {
+        super.onResume();
+        Log.w(TAG,"onresume");
+    }
+
+    /**
+     * hibernate in windows
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.w(TAG,"onstop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG,"ondestroy");
+
     }
 
     public void handleClick(View viewClicked) {
@@ -29,8 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 startHome();
                 break;
             case R.id.btnDial:
-                Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:9880979732"));
-                startActivity(dialIntent);
+                startDialer();
                 break;
             case R.id.btnAlarm:
                 createAlarm("b2harman",11,29);
@@ -39,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void startDialer() {
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:9880979732"));
+        startActivity(dialIntent);
     }
 
     private void startHome() {
