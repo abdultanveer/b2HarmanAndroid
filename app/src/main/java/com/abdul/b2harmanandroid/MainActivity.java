@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         String name = nameEditText.getText().toString();
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         Intent hIntent = new Intent(MainActivity.this, HomeActivity.class);
+        hIntent.putExtra("harmankey",name);
         startActivity(hIntent);
     }
 }

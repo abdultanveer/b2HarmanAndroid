@@ -9,9 +9,14 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        var abdul = Student("ansari",123,true)
-        abdul.name = "ansari"
-        var emp = Employee("abdul",123,false)
+        //get the data from main activity
+            //get the intent which started this activity
+            //from that intent get the extras
+            //from that extras get the string with the key/tag = harmankey
+        //show that data in a textview
+            //get the handle on the textview
+            //set the text/string that you got from the previous step
+    
     }
 
     fun clickHandler(view: View) {
