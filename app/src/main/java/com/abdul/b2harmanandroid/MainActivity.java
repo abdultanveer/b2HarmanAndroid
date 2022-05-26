@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private void populateListView() {
         ListView countriesListView = findViewById(R.id.countriesLv);
 
+        String[] countries = new String[]{"india","saudi","iran","afghanistan","india","saudi","iran","afghanistan","india","saudi","iran","afghanistan"};
+
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this,
+                        android.R.layout.simple_list_item_1, //layout for each row of the listview
+                        countries);
+        countriesListView.setAdapter(adapter); //putting adapter into socket
     }
 
     @Override
