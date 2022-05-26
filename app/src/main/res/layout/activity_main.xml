@@ -38,7 +38,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="39dp"
         android:onClick="handleClick"
-        android:text="submit"
+        android:text="share contact"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
@@ -58,11 +58,20 @@
         android:id="@+id/btnAlarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="handleClick"
-        android:text="alarm"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="40dp"
+        android:onClick="handleClick"
+        android:text="alarm"
         app:layout_constraintLeft_toRightOf="@id/btnDial"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"/>
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <TextView
+        android:id="@+id/tvContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@id/btnSubmit"
+        app:layout_constraintTop_toBottomOf="@id/btnSubmit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

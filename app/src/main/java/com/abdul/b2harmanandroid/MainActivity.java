@@ -1,5 +1,6 @@
 package com.abdul.b2harmanandroid;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.provider.AlarmClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -82,12 +84,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(dialIntent);
     }
 
+    /**
+     * this will start home activity
+     * get the contact from contacts
+     */
     private void startHome() {
-        String name = nameEditText.getText().toString();
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         Intent hIntent = new Intent(MainActivity.this, HomeActivity.class);
-        hIntent.putExtra("harmankey",name);
-        startActivity(hIntent);
+        startActivityForResult(hIntent,123); //request code will identify what kind[contact] of request im making
     }
 
     public void createAlarm(String message, int hour, int minutes) {
@@ -97,6 +100,26 @@ public class MainActivity extends AppCompatActivity {
                 .putExtra(AlarmClock.EXTRA_MINUTES, minutes);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
+        }
+    }
+
+    /**
+     * using request code you can differentiate whether the data being received is of type contact/location/image
+     * @param requestCode
+     * @param resultCode
+     * @param intentHomeActivity
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intentHomeActivity) {
+        super.onActivityResult(requestCode, resultCode, intentHomeActivity);
+        if(requestCode == 123 && resultCode == RESULT_OK){
+            //get hold of tvContact
+            TextView tvContact = findViewById(R.id.tvContact);
+            //from the intent get the extras and string in extras with key result
+            Bundle extras = intentHomeActivity.getExtras();
+            String data = extras.getString("result");
+            //set the string on the tvContact
+            tvContact.setText(data);
         }
     }
 }
