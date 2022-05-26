@@ -74,4 +74,13 @@
         app:layout_constraintLeft_toLeftOf="@id/btnSubmit"
         app:layout_constraintTop_toBottomOf="@id/btnSubmit" />
 
+    <ListView
+        android:id="@+id/countriesLv"
+        android:layout_width="409dp"
+        android:entries="@array/countries"
+        android:layout_height="508dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvContact" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

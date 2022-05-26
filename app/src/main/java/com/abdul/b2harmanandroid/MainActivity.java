@@ -10,6 +10,7 @@ import android.provider.AlarmClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +24,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); //inflating xml
         Log.i(TAG,"oncreate");
         nameEditText = findViewById(R.id.etName); //initialization -- getting hold of the edittext/ taking handle
-        Employee ansari = new Employee("abdul", 123, true);
-        ansari.seteName("abdul");
-        Student abdul = new Student("ansari", 123, true);
+       populateListView();
+    }
+
+    private void populateListView() {
+        ListView countriesListView = findViewById(R.id.countriesLv);
+
     }
 
     @Override
@@ -75,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-
-
     }
 
     private void startDialer() {
@@ -89,8 +91,17 @@ public class MainActivity extends AppCompatActivity {
      * get the contact from contacts
      */
     private void startHome() {
+        Log.i(TAG,"starting home");
+        int a =10;
+        int b = 20;
+        int c = 0;
+        for(int i=1;i<5;i++){
+             c = i + b;
+        }
+
         Intent hIntent = new Intent(MainActivity.this, HomeActivity.class);
         startActivityForResult(hIntent,123); //request code will identify what kind[contact] of request im making
+       // throw new NullPointerException("main activity couldn't start home");
     }
 
     public void createAlarm(String message, int hour, int minutes) {
@@ -112,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intentHomeActivity) {
         super.onActivityResult(requestCode, resultCode, intentHomeActivity);
+        Log.i(TAG,"received result from home");
         if(requestCode == 123 && resultCode == RESULT_OK){
             //get hold of tvContact
             TextView tvContact = findViewById(R.id.tvContact);
