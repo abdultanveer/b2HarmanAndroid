@@ -17,7 +17,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         contactEditText = findViewById(R.id.etContact)
         Log.i(TAG,"home activity created")
-
     }
 
     fun clickHandler(view: View) {
@@ -33,5 +32,10 @@ class HomeActivity : AppCompatActivity() {
         //close this activity
         finish()
 
+    }
+     //developer is interested in making things work asap
+    //to make things fool proof
+    fun add( a:Int,  b:Int):Int {
+        return a+b
     }
 }

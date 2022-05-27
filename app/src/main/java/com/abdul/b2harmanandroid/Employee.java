@@ -4,6 +4,7 @@ public class Employee {
     String eName;
     int eAge;
     boolean isElgible;
+    static String COMPANY_NAME = "harman"; //class memory
 
     public Employee(String eName, int eAge, boolean isElgible) {
         this.eName = eName;
