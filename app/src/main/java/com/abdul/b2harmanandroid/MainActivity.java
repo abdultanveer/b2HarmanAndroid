@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnFocusChangeListener {
     EditText nameEditText; //declaration
     public static  String TAG = MainActivity.class.getSimpleName(); //"MainActivity"
 
@@ -25,7 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); //inflating xml
         Log.i(TAG,"oncreate");
         nameEditText = findViewById(R.id.etName); //initialization -- getting hold of the edittext/ taking handle
-       populateListView();
+       nameEditText.setOnFocusChangeListener(this);
+        populateListView();
     }
 
     private void populateListView() {
@@ -141,6 +142,18 @@ public class MainActivity extends AppCompatActivity {
             //set the string on the tvContact
             tvContact.setText(data);
         }
+    }
+
+    @Override
+    public void onFocusChange(View currentViewWithFocus, boolean isFocussed) {
+        if(isFocussed){
+            Toast.makeText(this,  "is focussed", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this,  "lost focus", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 }
 
