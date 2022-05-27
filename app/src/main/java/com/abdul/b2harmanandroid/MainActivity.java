@@ -1,5 +1,6 @@
 package com.abdul.b2harmanandroid;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -154,6 +158,29 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
 
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+         super.onOptionsItemSelected(item);
+         switch (item.getItemId()){
+             case R.id.settingsMitem:
+                 Toast.makeText(this, "opening settings", Toast.LENGTH_SHORT).show();
+                 break;
+             case R.id.logoutMitem:
+                 Toast.makeText(this, "logging out", Toast.LENGTH_SHORT).show();
+
+                 break;
+         }
+        return true;
     }
 }
 
