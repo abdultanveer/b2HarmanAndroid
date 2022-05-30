@@ -29,4 +29,13 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/etTitle"
         app:layout_constraintTop_toBottomOf="@+id/etTitle" />
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="insert"
+        android:onClick="dbHandler"
+        tools:layout_editor_absoluteX="58dp"
+        tools:layout_editor_absoluteY="218dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
