@@ -20,12 +20,12 @@
 
     <EditText
         android:id="@+id/etNotes"
-        android:hint="notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="33dp"
         android:ems="10"
+        android:hint="notes"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/etTitle"
         app:layout_constraintTop_toBottomOf="@+id/etTitle" />
@@ -34,8 +34,31 @@
         android:id="@+id/btnInsert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="insert"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="31dp"
         android:onClick="dbHandler"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="218dp" />
+        android:text="insert"
+        app:layout_constraintStart_toStartOf="@+id/etNotes"
+        app:layout_constraintTop_toBottomOf="@+id/etNotes" />
+
+    <TextView
+        android:id="@+id/tvDbResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="36dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/btnInsert"
+        app:layout_constraintTop_toBottomOf="@+id/btnInsert" />
+
+    <Button
+        android:id="@+id/btnGet"
+        android:onClick="dbHandler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="51dp"
+        android:layout_marginTop="27dp"
+        android:text="get"
+        app:layout_constraintStart_toEndOf="@+id/btnInsert"
+        app:layout_constraintTop_toBottomOf="@+id/etNotes" />
 </androidx.constraintlayout.widget.ConstraintLayout>

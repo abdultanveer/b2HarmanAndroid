@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import com.abdul.b2harmanandroid.data.Item
 import com.abdul.b2harmanandroid.data.ItemDao
 import com.abdul.b2harmanandroid.data.ItemRoomDatabase
@@ -71,12 +72,17 @@ class DataActivity : AppCompatActivity() {
     }
 
     fun dbHandler(view: View) {
-        val item = Item(1,"sugar",40.0,5)
-        when(view.id){
-            R.id.btnInsert -> 
-        //insertItem(item)}
-            insertRow()
+        val item = Item(1, "sugar", 40.0, 5)
+        when (view.id) {
+            R.id.btnInsert -> {                insertRow()            }
+            R.id.btnGet -> {getRow()}
         }
+    }
+
+    private fun getRow() {
+        var tvDbRow : TextView = findViewById(R.id.tvDbResult)
+        var row = dao.readRow()
+        tvDbRow.setText(row)
     }
 
     private fun insertRow() {
