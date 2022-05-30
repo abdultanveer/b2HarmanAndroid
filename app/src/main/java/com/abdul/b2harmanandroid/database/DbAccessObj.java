@@ -46,7 +46,8 @@ public class DbAccessObj {
     }
     public void updateRow(){}
     public void deleteRow(){}
-    public void readRows(){
-
+    public Cursor readRows(){
+        Cursor resultCursor = database.rawQuery("select * from entry",null);
+        return resultCursor;
     }
 }

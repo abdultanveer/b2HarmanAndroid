@@ -1,10 +1,10 @@
 package com.abdul.b2harmanandroid
 
+import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import com.abdul.b2harmanandroid.data.Item
 import com.abdul.b2harmanandroid.data.ItemDao
 import com.abdul.b2harmanandroid.data.ItemRoomDatabase
@@ -12,6 +12,7 @@ import com.abdul.b2harmanandroid.database.DbAccessObj
 import com.abdul.b2harmanandroid.database.Note
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import  com.abdul.b2harmanandroid.database.FeedReaderContract.FeedEntry;
 
 /**
  * this activity demonstrates how data can be saved and retreived in android
@@ -32,6 +33,20 @@ class DataActivity : AppCompatActivity() {
         etTitle = findViewById(R.id.etTitle)
         etNotes = findViewById(R.id.etNotes)
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        var dataCursor = dao.readRows()
+        var from = arrayOf(FeedEntry.COLUMN_NAME_TITLE,FeedEntry.COLUMN_NAME_SUBTITLE)
+        var to = intArrayOf(android.R.id.text1,android.R.id.text2)
+        var adapter = SimpleCursorAdapter(this,
+            android.R.layout.simple_list_item_2, //layout of each row of listview
+            dataCursor, //data
+            from, //names of the columns in db table
+            to) //id's of the textviews in simple_list_item_2 layout
+        var dataListView: ListView = findViewById(R.id.lvDb)
+        dataListView.adapter = adapter
     }
 
 

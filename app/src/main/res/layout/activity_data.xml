@@ -12,9 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginTop="64dp"
+        android:layout_marginBottom="213dp"
         android:ems="10"
         android:hint="title"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,12 +55,24 @@
 
     <Button
         android:id="@+id/btnGet"
-        android:onClick="dbHandler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="51dp"
         android:layout_marginTop="27dp"
+        android:onClick="dbHandler"
         android:text="get"
         app:layout_constraintStart_toEndOf="@+id/btnInsert"
         app:layout_constraintTop_toBottomOf="@+id/etNotes" />
+
+    <ListView
+        android:id="@+id/lvDb"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDbResult" />
 </androidx.constraintlayout.widget.ConstraintLayout>
