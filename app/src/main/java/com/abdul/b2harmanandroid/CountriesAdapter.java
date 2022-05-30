@@ -1,5 +1,7 @@
 package com.abdul.b2harmanandroid;
+import  com.abdul.b2harmanandroid.database.FeedReaderContract.FeedEntry;
 
+import android.database.Cursor;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder> {
     public static String TAG = CountriesAdapter.class.getSimpleName();
-    String[] mCountries;
+    //String[] mCountries;
+    Cursor mCursor;
 
     public CountriesAdapter(String[] countries) {
-        mCountries = countries;
+       // mCountries = countries;
+    }
+
+    public CountriesAdapter(Cursor dataCursor) {
+        mCursor = dataCursor;
     }
 
     @NonNull
@@ -28,16 +35,19 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
 
     @Override //abishek -- write the data on the planks
     public void onBindViewHolder(@NonNull CountriesViewHolder shwetaHolder, int position) {
-        Log.i(TAG, "abishek -- write the data on the planks--"+mCountries[position]);
-        shwetaHolder.tvRecyclerItem.setText(mCountries[position]);
-
+        Log.i(TAG, "abishek -- write the data on the planks--"+mCursor.getPosition());
+        //shwetaHolder.tvRecyclerItem.setText(mCountries[position]);
+        int titleIndex = mCursor.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_TITLE); //1
+        mCursor.moveToPosition(position);
+        shwetaHolder.tvRecyclerItem.setText(mCursor.getString(titleIndex));
     }
 
     @Override //bipin -- count the remaining items in the array
     public int getItemCount() {
-        Log.i(TAG, "bipin -- count the remaining items in the array--"+ mCountries.length);
+        Log.i(TAG, "bipin -- count the remaining items in the array--"+ mCursor.getCount());
 
-        return mCountries.length;
+        return mCursor.getCount();
+                //mCountries.length;
     }
 
     //shweta -- owns box  to hold the reserve planks
