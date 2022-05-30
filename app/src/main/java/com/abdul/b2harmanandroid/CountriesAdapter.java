@@ -38,8 +38,11 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
         Log.i(TAG, "abishek -- write the data on the planks--"+mCursor.getPosition());
         //shwetaHolder.tvRecyclerItem.setText(mCountries[position]);
         int titleIndex = mCursor.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_TITLE); //1
+        int subTitleIndex = mCursor.getColumnIndexOrThrow(FeedEntry.COLUMN_NAME_SUBTITLE);//2
+
         mCursor.moveToPosition(position);
         shwetaHolder.tvRecyclerItem.setText(mCursor.getString(titleIndex));
+        shwetaHolder.tvSubtitle.setText(mCursor.getString(subTitleIndex));
     }
 
     @Override //bipin -- count the remaining items in the array
@@ -52,12 +55,14 @@ public class CountriesAdapter extends RecyclerView.Adapter<CountriesAdapter.Coun
 
     //shweta -- owns box  to hold the reserve planks
     public  class CountriesViewHolder extends RecyclerView.ViewHolder {
-        TextView tvRecyclerItem;
+        TextView tvRecyclerItem, tvSubtitle;
         public CountriesViewHolder(@NonNull View itemView) {
             super(itemView);
             Log.i(TAG, "shweta -- owns box  to hold the reserve planks");
 
             tvRecyclerItem = itemView.findViewById(R.id.tvRecyclerItem);
+            tvSubtitle = itemView.findViewById(R.id.tvSubtitle);
+
         }
     }
 }
