@@ -10,6 +10,7 @@ import com.abdul.b2harmanandroid.database.FeedReaderContract.FeedEntry;
 import com.abdul.b2harmanandroid.data.Item;
 
 public class DbAccessObj {
+    int a = 10;
     DbHelper dbHelper;
     SQLiteDatabase database;
 

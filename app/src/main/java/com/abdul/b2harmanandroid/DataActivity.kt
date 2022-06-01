@@ -1,5 +1,6 @@
 package com.abdul.b2harmanandroid
 
+import android.content.Context
 import android.database.Cursor
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,6 +33,9 @@ class DataActivity : AppCompatActivity() {
         dao.openDb()
         etTitle = findViewById(R.id.etTitle)
         etNotes = findViewById(R.id.etNotes)
+
+        /*inventoryApplication = application as InventoryApplication
+        inventoryApplication.database.itemDao()*/
 
     }
 
@@ -100,11 +104,20 @@ class DataActivity : AppCompatActivity() {
         tvDbRow.setText(row)
     }
 
+    fun Context.showToast(message: String){
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
+
+    }
+
     private fun insertRow() {
+        showToast("hi this is an extension function")
         var title = etTitle.text.toString()
         var subTitle = etNotes.text.toString()
         var note = Note(title,subTitle)
         dao.createRow(note)
+        /*foo(9,"abdul")
+        foo()*/
+
 
     }
 
@@ -116,4 +129,8 @@ class DataActivity : AppCompatActivity() {
 
         }
     }
+
+
+    fun foo(a: Int = 0, b: String = "") {  }
+
 }

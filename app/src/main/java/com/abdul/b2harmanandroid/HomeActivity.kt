@@ -1,5 +1,6 @@
 package com.abdul.b2harmanandroid
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -29,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
 
     fun clickHandler(view: View) {
         //get the contact from the edittext
+
         var data = contactEditText.text.toString()
         Log.i(TAG,"setting the result --"+ data)
 

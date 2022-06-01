@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
      * get the contact from contacts
      */
     private void startHome() {
+
         Log.i(TAG,"starting home");
         int a =10;
         int b = 20;

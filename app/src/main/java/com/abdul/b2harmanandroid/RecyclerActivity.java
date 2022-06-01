@@ -22,6 +22,7 @@ public class RecyclerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler);
         dao = new DbAccessObj(this);
         dao.openDb();
+       // President president = President.getInstance();
     }
 
     @Override
