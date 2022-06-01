@@ -17,13 +17,14 @@ class ContentProviderActivity : AppCompatActivity() {
     }
 
     private fun getSmsInbox() {
-        val uriSms: Uri = Uri.parse("content://sms/inbox")
+        val uriSms: Uri = Uri.parse("content://call_log/calls")
+            //"content://sms/inbox")
         val dataCursor: Cursor? = getContentResolver().query(uriSms, null, null, null, null)
 
-        var from = arrayOf("address","body")
-        var to = intArrayOf(android.R.id.text1, android.R.id.text2)
+        var from = arrayOf(android.provider.CallLog.Calls.NUMBER)
+        var to = intArrayOf(android.R.id.text1)
         var adapter = SimpleCursorAdapter(this,
-            android.R.layout.simple_list_item_2, //layout of each row of listview
+            android.R.layout.simple_list_item_1, //layout of each row of listview
             dataCursor, //data
             from, //names of the columns in db table
             to) //id's of the textviews in simple_list_item_2 layout
