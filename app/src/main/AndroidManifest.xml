@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.B2HarmanAndroid">
         <activity
-            android:name=".AsyncActivity"
+            android:name=".WhoWroteItActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +24,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ContentProviderActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".DataActivity"
+            android:name=".AsyncActivity"
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".ContentProviderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DataActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".RecyclerActivity"
             android:exported="true" />
