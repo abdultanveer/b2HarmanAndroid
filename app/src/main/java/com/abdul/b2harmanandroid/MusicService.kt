@@ -18,8 +18,8 @@ class MusicService : Service() {
       // if (intent.extras != null) //null check
         var musicFileName = intent?.extras?.getString("musicname")
         Log.i(TAG,"service-onStartCommand - playing--"+musicFileName)
-        var musicPlayer = MediaPlayer.create(this,R.raw.sample)
-        musicPlayer.start()
+        /*var musicPlayer = MediaPlayer.create(this,R.raw.sample)
+        musicPlayer.start()*/
         return START_STICKY
     }
 

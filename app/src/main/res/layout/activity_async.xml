@@ -30,23 +30,45 @@
 
     <Button
         android:id="@+id/btnStart"
-        android:onClick="serviceHandler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="41dp"
+        android:onClick="serviceHandler"
         android:text="start"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnStop"
         app:layout_constraintEnd_toStartOf="@+id/btnStop" />
 
     <Button
-        android:onClick="serviceHandler"
-
         android:id="@+id/btnStop"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="16dp"
+        android:onClick="serviceHandler"
         android:text="stop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBind"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:onClick="serviceHandler"
+        android:text="bind"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnUnbind"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnUnbind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:onClick="serviceHandler"
+        android:text="unbind"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStart" />
 </androidx.constraintlayout.widget.ConstraintLayout>
