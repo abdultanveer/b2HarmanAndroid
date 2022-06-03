@@ -6,6 +6,7 @@ import androidx.core.app.NotificationCompat;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -85,12 +86,19 @@ public class AsyncActivity extends AppCompatActivity {
 
     public void showNotification(View view) {
         createNotificationChannel();
+        Intent intent = new Intent(this, WhoWroteItActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "CHANNEL_ID")
+                .addAction(R.drawable.ic_baseline_snooze_24, getString(R.string.snooze),pendingIntent)
+
+                //.setContentIntent(pendingIntent)
                 .setSmallIcon(R.drawable.ic_baseline_assistant_direction_24)
                 .setContentTitle("My notification title")
                 .setContentText("text Much longer text that cannot fit one line...")
                 .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("Much longer text that cannot fit one line..."))
+                .bigText("Much longer text that cannot fit one line..."))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
         Notification notification = builder.build();
         notificationManager.notify(123,notification);
